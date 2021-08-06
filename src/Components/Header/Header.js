@@ -6,8 +6,9 @@ import {
 } from "@material-ui/core";
 import React from "react";
 import "./Header.css";
+import categories from "../../data/category";
 
-export const Header = () => {
+export const Header = ({ category, setCategory, word, setWord }) => {
   const darkTheme = createTheme({
     palette: {
       primary: {
@@ -17,19 +18,33 @@ export const Header = () => {
     },
   });
 
+  const handleChange = (language) => {
+    setCategory(language);
+    setWord("");
+  };
+
   return (
     <div className="header">
-      <span className="title">Dictionary</span>
+      <span className="title">{word ? word : "Dictionary"}</span>
       <div className="inputs">
         <ThemeProvider theme={darkTheme}>
-          <TextField id="standard-basic" label="Standard" />
           <TextField
-            id="standard-select-currency"
+            className="search"
+            label="Search"
+            value={word}
+            onChange={(e) => setWord(e.target.value)}
+          />
+          <TextField
+            className="select"
             select
-            label="Select"
-            helperText="Please select your currency"
+            label="Language"
+            value={category}
+            onChange={(e) => handleChange(e.target.value)}
           >
-            <MenuItem>English</MenuItem>
+            {categories.map((option) => (
+              <MenuItem key={option.label} value={option.label}>
+                {option.value}
+              </MenuItem>
             ))}
           </TextField>
         </ThemeProvider>
