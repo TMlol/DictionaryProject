@@ -8,13 +8,19 @@ import React from "react";
 import "./Header.css";
 import categories from "../../data/category";
 
-export const Header = ({ category, setCategory, word, setWord }) => {
+export const Header = ({
+  category,
+  setCategory,
+  word,
+  setWord,
+  LightTheme,
+}) => {
   const darkTheme = createTheme({
     palette: {
       primary: {
-        main: "#fff",
+        main: LightTheme ? "#000" : "#fff",
       },
-      type: "dark",
+      type: LightTheme ? "light" : "dark",
     },
   });
 
