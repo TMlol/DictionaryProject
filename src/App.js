@@ -1,4 +1,5 @@
 import { Container } from "@material-ui/core";
+import { Header } from "./Components/Header/Header";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./App.css";
@@ -18,8 +19,6 @@ function App() {
     }
   };
 
-  console.log(meanings);
-
   useEffect(() => {
     dictionaryApi();
   }, []);
@@ -31,9 +30,9 @@ function App() {
     >
       <Container
         maxWidth="md"
-        style={{ display: "flex", flexDirection: "column" }}
+        style={{ display: "flex", flexDirection: "column", height: "100vh" }}
       >
-        Word
+        <Header />
       </Container>
     </div>
   );
