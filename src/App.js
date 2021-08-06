@@ -3,6 +3,7 @@ import { Header } from "./Components/Header/Header";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./App.css";
+import Definitions from "./Components/Definitions/Definitions";
 
 function App() {
   const [meanings, setMeanings] = useState([]);
@@ -41,6 +42,9 @@ function App() {
           word={word}
           setWord={setWord}
         />
+        {meanings && (
+          <Definitions word={word} meanings={meanings} category={category} />
+        )}
       </Container>
     </div>
   );
